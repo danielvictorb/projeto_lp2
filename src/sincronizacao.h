@@ -70,5 +70,21 @@ void inicializar_fila(FilaPedidos *fila);
 void destruir_fila(FilaPedidos *fila);
 void inicializar_estatisticas(Estatisticas *stats);
 void destruir_estatisticas(Estatisticas *stats);
+void inicializar_sistema(SistemaRestaurante *sistema);
+void destruir_sistema(SistemaRestaurante *sistema);
+
+/* Operações na fila de pedidos */
+void enfileirar_pedido(FilaPedidos *fila, Pedido pedido);
+Pedido desenfileirar_pedido(FilaPedidos *fila);
+
+/* Registro de log com timestamp */
+void registrar_log(SistemaRestaurante *sistema, const char *formato, ...);
+
+/* Estatísticas */
+void atualizar_estatisticas(Estatisticas *stats, double tempo_espera);
+void imprimir_estatisticas(Estatisticas *stats);
+
+/* Utilidade para calcular diferença de tempo em segundos */
+double calcular_tempo_decorrido(struct timespec inicio, struct timespec fim);
 
 #endif
