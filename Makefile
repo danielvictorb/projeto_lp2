@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -pthread
+CFLAGS = -Wall -Wextra -pthread -Wno-deprecated-declarations
 SRC = src/main.c src/sincronizacao.c
 OUT = restaurante
 
