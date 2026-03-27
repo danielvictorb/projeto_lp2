@@ -30,8 +30,8 @@ typedef struct {
     int fim;
     int quantidade;
     pthread_mutex_t mutex_fila;
-    sem_t sem_vagas;
-    sem_t sem_itens;
+    sem_t *sem_vagas;
+    sem_t *sem_itens;
 } FilaPedidos;
 
 /* Estatísticas globais da simulação */
@@ -47,7 +47,7 @@ typedef struct {
 typedef struct {
     FilaPedidos fila;
     Estatisticas stats;
-    sem_t sem_fogoes;
+    sem_t *sem_fogoes;
     pthread_mutex_t mutex_log;
 } SistemaRestaurante;
 

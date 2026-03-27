@@ -2,6 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <fcntl.h>
+
+/* Nomes para os semáforos nomeados (compatível com macOS e Linux) */
+#define SEM_NOME_VAGAS  "/rest_sem_vagas"
+#define SEM_NOME_ITENS  "/rest_sem_itens"
+#define SEM_NOME_FOGOES "/rest_sem_fogoes"
+
+/* Abre um semáforo nomeado com tratamento de erro */
+static sem_t *abrir_semaforo(const char *nome, unsigned int valor_inicial) {
+    /* Remove semáforo anterior caso exista */
+    sem_unlink(nome);
+
+    sem_t *sem = sem_open(nome, O_CREAT | O_EXCL, 0644, valor_inicial);
+    if (sem == SEM_FAILED) {
+        perror("Erro ao abrir semáforo");
+        exit(EXIT_FAILURE);
+    }
+    return sem;
+}
+
+/* Fecha e remove um semáforo nomeado */
+static void fechar_semaforo(sem_t *sem, const char *nome) {
+    sem_close(sem);
+    sem_unlink(nome);
+}
 
 /* Calcula a diferença em segundos entre dois timestamps */
 double calcular_tempo_decorrido(struct timespec inicio, struct timespec fim) {
@@ -21,27 +46,22 @@ void inicializar_fila(FilaPedidos *fila) {
         perror("Erro ao inicializar mutex_fila");
         exit(EXIT_FAILURE);
     }
-    if (sem_init(&fila->sem_vagas, 0, TAM_FILA) != 0) {
-        perror("Erro ao inicializar sem_vagas");
-        exit(EXIT_FAILURE);
-    }
-    if (sem_init(&fila->sem_itens, 0, 0) != 0) {
-        perror("Erro ao inicializar sem_itens");
-        exit(EXIT_FAILURE);
-    }
+
+    fila->sem_vagas = abrir_semaforo(SEM_NOME_VAGAS, TAM_FILA);
+    fila->sem_itens = abrir_semaforo(SEM_NOME_ITENS, 0);
 }
 
 /* Destroi os recursos de sincronização da fila */
 void destruir_fila(FilaPedidos *fila) {
     pthread_mutex_destroy(&fila->mutex_fila);
-    sem_destroy(&fila->sem_vagas);
-    sem_destroy(&fila->sem_itens);
+    fechar_semaforo(fila->sem_vagas, SEM_NOME_VAGAS);
+    fechar_semaforo(fila->sem_itens, SEM_NOME_ITENS);
 }
 
 /* Insere um pedido na fila (chamado pelos garçons/produtor) */
 void enfileirar_pedido(FilaPedidos *fila, Pedido pedido) {
     /* Aguarda uma vaga disponível na fila */
-    sem_wait(&fila->sem_vagas);
+    sem_wait(fila->sem_vagas);
 
     /* Seção crítica: insere o pedido no buffer circular */
     pthread_mutex_lock(&fila->mutex_fila);
@@ -51,7 +71,7 @@ void enfileirar_pedido(FilaPedidos *fila, Pedido pedido) {
     pthread_mutex_unlock(&fila->mutex_fila);
 
     /* Sinaliza que há um novo item disponível */
-    sem_post(&fila->sem_itens);
+    sem_post(fila->sem_itens);
 }
 
 /* Remove e retorna um pedido da fila (chamado pelos cozinheiros/consumidor) */
@@ -59,7 +79,7 @@ Pedido desenfileirar_pedido(FilaPedidos *fila) {
     Pedido pedido;
 
     /* Aguarda um item disponível na fila */
-    sem_wait(&fila->sem_itens);
+    sem_wait(fila->sem_itens);
 
     /* Seção crítica: remove o pedido do buffer circular */
     pthread_mutex_lock(&fila->mutex_fila);
@@ -69,7 +89,7 @@ Pedido desenfileirar_pedido(FilaPedidos *fila) {
     pthread_mutex_unlock(&fila->mutex_fila);
 
     /* Sinaliza que há uma nova vaga disponível */
-    sem_post(&fila->sem_vagas);
+    sem_post(fila->sem_vagas);
 
     return pedido;
 }
@@ -129,10 +149,8 @@ void inicializar_sistema(SistemaRestaurante *sistema) {
     inicializar_fila(&sistema->fila);
     inicializar_estatisticas(&sistema->stats);
 
-    if (sem_init(&sistema->sem_fogoes, 0, NUM_FOGOES) != 0) {
-        perror("Erro ao inicializar sem_fogoes");
-        exit(EXIT_FAILURE);
-    }
+    sistema->sem_fogoes = abrir_semaforo(SEM_NOME_FOGOES, NUM_FOGOES);
+
     if (pthread_mutex_init(&sistema->mutex_log, NULL) != 0) {
         perror("Erro ao inicializar mutex_log");
         exit(EXIT_FAILURE);
@@ -143,7 +161,7 @@ void inicializar_sistema(SistemaRestaurante *sistema) {
 void destruir_sistema(SistemaRestaurante *sistema) {
     destruir_fila(&sistema->fila);
     destruir_estatisticas(&sistema->stats);
-    sem_destroy(&sistema->sem_fogoes);
+    fechar_semaforo(sistema->sem_fogoes, SEM_NOME_FOGOES);
     pthread_mutex_destroy(&sistema->mutex_log);
 }
 
