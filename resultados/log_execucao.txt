@@ -1,0 +1,130 @@
+========================================
+    RESTAURANTE CONCORRENTE
+========================================
+Cozinheiros: 4
+Fogões:      2
+Mesas:       6
+Garçons:     2
+Tempo de preparo: 1 segundo(s)
+Pedidos por mesa: 3
+Total de pedidos: 18
+========================================
+
+[  0.000s] Garçom 0 iniciou (mesas 0 a 2)
+[  0.000s] Cozinheiro 0 iniciou
+[  0.000s] Garçom 1 iniciou (mesas 3 a 5)
+[  0.000s] Cozinheiro 1 iniciou
+[  0.000s] Garçom 0: coletou pedido #1 da mesa 0
+[  0.000s] Garçom 1: coletou pedido #2 da mesa 3
+[  0.000s] Cozinheiro 0: pegou pedido #1 (mesa 0, espera: 0.000s)
+[  0.000s] Garçom 1: colocou pedido #2 na fila
+[  0.000s] Cozinheiro 2 iniciou
+[  0.000s] Cozinheiro 3 iniciou
+[  0.000s] Cozinheiro 0: usando fogão para preparar pedido #1
+[  0.000s] Cozinheiro 1: pegou pedido #2 (mesa 3, espera: 0.000s)
+[  0.000s] Cozinheiro 1: usando fogão para preparar pedido #2
+[  0.000s] Garçom 0: colocou pedido #1 na fila
+[  0.148s] Garçom 0: coletou pedido #3 da mesa 0
+[  0.148s] Garçom 0: colocou pedido #3 na fila
+[  0.148s] Cozinheiro 2: pegou pedido #3 (mesa 0, espera: 0.000s)
+[  0.295s] Garçom 1: coletou pedido #4 da mesa 3
+[  0.295s] Garçom 1: colocou pedido #4 na fila
+[  0.295s] Cozinheiro 3: pegou pedido #4 (mesa 3, espera: 0.000s)
+[  0.392s] Garçom 0: coletou pedido #5 da mesa 0
+[  0.392s] Garçom 0: colocou pedido #5 na fila
+[  0.506s] Garçom 0: coletou pedido #6 da mesa 1
+[  0.506s] Garçom 0: colocou pedido #6 na fila
+[  0.526s] Garçom 1: coletou pedido #7 da mesa 3
+[  0.526s] Garçom 1: colocou pedido #7 na fila
+[  0.771s] Garçom 1: coletou pedido #8 da mesa 4
+[  0.771s] Garçom 1: colocou pedido #8 na fila
+[  0.807s] Garçom 0: coletou pedido #9 da mesa 1
+[  0.807s] Garçom 0: colocou pedido #9 na fila
+[  0.982s] Garçom 0: coletou pedido #10 da mesa 1
+[  0.982s] Garçom 0: colocou pedido #10 na fila
+[  1.005s] Cozinheiro 1: pedido #2 pronto! (mesa 3)
+[  1.005s] Cozinheiro 1: pegou pedido #5 (mesa 0, espera: 0.613s)
+[  1.005s] Cozinheiro 0: pedido #1 pronto! (mesa 0)
+[  1.005s] Cozinheiro 2: usando fogão para preparar pedido #3
+[  1.005s] Cozinheiro 0: pegou pedido #6 (mesa 1, espera: 0.499s)
+[  1.005s] Cozinheiro 3: usando fogão para preparar pedido #4
+[  1.020s] Garçom 1: coletou pedido #11 da mesa 4
+[  1.020s] Garçom 1: colocou pedido #11 na fila
+[  1.170s] Garçom 0: coletou pedido #12 da mesa 2
+[  1.170s] Garçom 0: colocou pedido #12 na fila
+[  1.195s] Garçom 1: coletou pedido #13 da mesa 4
+[  1.195s] Garçom 1: colocou pedido #13 na fila
+[  1.316s] Garçom 0: coletou pedido #14 da mesa 2
+[  1.316s] Garçom 0: colocou pedido #14 na fila
+[  1.390s] Garçom 1: coletou pedido #15 da mesa 5
+[  1.390s] Garçom 1: colocou pedido #15 na fila
+[  1.605s] Garçom 0: coletou pedido #16 da mesa 2
+[  1.605s] Garçom 0: colocou pedido #16 na fila
+[  1.684s] Garçom 1: coletou pedido #17 da mesa 5
+[  1.786s] Garçom 0 encerrou o turno
+[  2.010s] Cozinheiro 3: pedido #4 pronto! (mesa 3)
+[  2.010s] Cozinheiro 0: usando fogão para preparar pedido #6
+[  2.010s] Cozinheiro 3: pegou pedido #7 (mesa 3, espera: 1.484s)
+[  2.010s] Garçom 1: colocou pedido #17 na fila
+[  2.010s] Cozinheiro 1: usando fogão para preparar pedido #5
+[  2.010s] Cozinheiro 2: pedido #3 pronto! (mesa 0)
+[  2.010s] Cozinheiro 2: pegou pedido #8 (mesa 4, espera: 1.238s)
+[  2.309s] Garçom 1: coletou pedido #18 da mesa 5
+[  2.309s] Garçom 1: colocou pedido #18 na fila
+[  2.511s] Garçom 1 encerrou o turno
+[  2.511s] Todos os garçons terminaram. Enviando sinais de encerramento...
+[  3.015s] Cozinheiro 1: pedido #5 pronto! (mesa 0)
+[  3.015s] Cozinheiro 0: pedido #6 pronto! (mesa 1)
+[  3.015s] Cozinheiro 3: usando fogão para preparar pedido #7
+[  3.015s] Cozinheiro 2: usando fogão para preparar pedido #8
+[  3.015s] Cozinheiro 1: pegou pedido #9 (mesa 1, espera: 2.208s)
+[  3.015s] Cozinheiro 0: pegou pedido #10 (mesa 1, espera: 2.033s)
+[  4.020s] Cozinheiro 2: pedido #8 pronto! (mesa 4)
+[  4.020s] Cozinheiro 3: pedido #7 pronto! (mesa 3)
+[  4.020s] Cozinheiro 3: pegou pedido #12 (mesa 2, espera: 2.850s)
+[  4.020s] Cozinheiro 0: usando fogão para preparar pedido #10
+[  4.020s] Cozinheiro 2: pegou pedido #11 (mesa 4, espera: 3.000s)
+[  4.020s] Cozinheiro 1: usando fogão para preparar pedido #9
+[  5.022s] Cozinheiro 1: pedido #9 pronto! (mesa 1)
+[  5.022s] Cozinheiro 3: usando fogão para preparar pedido #12
+[  5.022s] Cozinheiro 1: pegou pedido #13 (mesa 4, espera: 3.827s)
+[  5.025s] Cozinheiro 0: pedido #10 pronto! (mesa 1)
+[  5.025s] Cozinheiro 2: usando fogão para preparar pedido #11
+[  5.025s] Cozinheiro 0: pegou pedido #14 (mesa 2, espera: 3.709s)
+[  6.026s] Cozinheiro 2: pedido #11 pronto! (mesa 4)
+[  6.026s] Cozinheiro 2: pegou pedido #15 (mesa 5, espera: 4.636s)
+[  6.026s] Cozinheiro 1: usando fogão para preparar pedido #13
+[  6.027s] Cozinheiro 3: pedido #12 pronto! (mesa 2)
+[  6.027s] Cozinheiro 3: pegou pedido #16 (mesa 2, espera: 4.423s)
+[  6.027s] Cozinheiro 0: usando fogão para preparar pedido #14
+[  7.027s] Cozinheiro 1: pedido #13 pronto! (mesa 4)
+[  7.027s] Cozinheiro 1: pegou pedido #17 (mesa 5, espera: 5.342s)
+[  7.027s] Cozinheiro 2: usando fogão para preparar pedido #15
+[  7.033s] Cozinheiro 0: pedido #14 pronto! (mesa 2)
+[  7.033s] Cozinheiro 0: pegou pedido #18 (mesa 5, espera: 4.724s)
+[  7.033s] Cozinheiro 3: usando fogão para preparar pedido #16
+[  8.030s] Cozinheiro 1: usando fogão para preparar pedido #17
+[  8.030s] Cozinheiro 2: pedido #15 pronto! (mesa 5)
+[  8.030s] Cozinheiro 2 recebeu sinal de encerramento
+[  8.030s] Cozinheiro 2 encerrou
+[  8.038s] Cozinheiro 3: pedido #16 pronto! (mesa 2)
+[  8.038s] Cozinheiro 0: usando fogão para preparar pedido #18
+[  8.038s] Cozinheiro 3 recebeu sinal de encerramento
+[  8.038s] Cozinheiro 3 encerrou
+[  9.035s] Cozinheiro 1: pedido #17 pronto! (mesa 5)
+[  9.035s] Cozinheiro 1 recebeu sinal de encerramento
+[  9.035s] Cozinheiro 1 encerrou
+[  9.038s] Cozinheiro 0: pedido #18 pronto! (mesa 5)
+[  9.038s] Cozinheiro 0 recebeu sinal de encerramento
+[  9.038s] Cozinheiro 0 encerrou
+
+========================================
+       ESTATÍSTICAS DA SIMULAÇÃO
+========================================
+Total de pedidos atendidos: 18
+Tempo total de execução:   9.038 segundos
+Operações por segundo:     1.99
+Tempo médio de espera:     2.255 segundos
+========================================
+
+Simulação encerrada com sucesso.

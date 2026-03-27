@@ -9,7 +9,7 @@ $(OUT): $(SRC)
 	$(CC) $(CFLAGS) -o $(OUT) $(SRC)
 
 run: $(OUT)
-	./$(OUT)
+	./$(OUT) 2>&1 | tee resultados/log_execucao.txt
 
 clean:
 	rm -f $(OUT)
